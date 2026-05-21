@@ -1,0 +1,19 @@
+name: Build Docker Image
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Build Docker Image
+        run: |
+          docker build -t emx-aarch64-gem5:latest .
+      - name: Publish Docker Image
+        run: |
+          docker tag emx-aarch64-gem5:latest ghcr.io/emmtrix/emx-aarch64-gem5:latest
+          docker push ghcr.io/emmtrix/emx-aarch64-gem5:latest
