@@ -25,10 +25,10 @@ RUN apt-get update && apt-get install -y \
 	ca-certificates \
 	mc
 
-#RUN git clone --depth 1 --branch ${GEM5_VERSION} https://github.com/gem5/gem5.git ${GEM5_DIR}
+RUN git clone --depth 1 --branch ${GEM5_VERSION} https://github.com/gem5/gem5.git ${GEM5_DIR}
 
-#RUN cd ${GEM5_DIR} && scons build/ARM/gem5.opt -j"$(nproc)"
+RUN cd ${GEM5_DIR} && scons build/ARM/gem5.opt -j"$(nproc)"
 
-#RUN apt-get install -y make gcc g++ g++-12-aarch64-linux-gnu
+RUN apt-get install -y make gcc g++ g++-12-aarch64-linux-gnu
 
 WORKDIR /local
